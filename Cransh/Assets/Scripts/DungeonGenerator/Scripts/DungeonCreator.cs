@@ -17,14 +17,18 @@ public class DungeonCreator : MonoBehaviour
     [Range(0, 2)]
     public int roomOffset;
     public GameObject wallVertical, wallHorizontal;
+    public GameObject[] randomObjectPrefabs;  // Arreglo de prefabs de objetos aleatorios
+    public int numberOfRandomObjects;         // Número de objetos aleatorios a generar
     List<Vector3Int> possibleDoorVerticalPosition;
     List<Vector3Int> possibleDoorHorizontalPosition;
     List<Vector3Int> possibleWallHorizontalPosition;
     List<Vector3Int> possibleWallVerticalPosition;
+    List<Vector3> validFloorPositions;        // Posiciones válidas para generar objetos
+
     // Start is called before the first frame update
     void Start()
     {
-        CreateDungeon();
+        //CreateDungeon();
     }
 
     public void CreateDungeon()
@@ -44,11 +48,13 @@ public class DungeonCreator : MonoBehaviour
         possibleDoorHorizontalPosition = new List<Vector3Int>();
         possibleWallHorizontalPosition = new List<Vector3Int>();
         possibleWallVerticalPosition = new List<Vector3Int>();
+        validFloorPositions = new List<Vector3>();  // Inicializar la lista de posiciones válidas
         for (int i = 0; i < listOfRooms.Count; i++)
         {
             CreateMesh(listOfRooms[i].BottomLeftAreaCorner, listOfRooms[i].TopRightAreaCorner);
         }
         CreateWalls(wallParent);
+        GenerateRandomObjects();  // Generar objetos aleatorios
     }
 
     private void CreateWalls(GameObject wallParent)
@@ -65,7 +71,7 @@ public class DungeonCreator : MonoBehaviour
 
     private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject wallPrefab)
     {
-        Instantiate(wallPrefab, wallPosition, Quaternion.identity, wallParent.transform);
+        GameObject wall = Instantiate(wallPrefab, wallPosition, Quaternion.identity, wallParent.transform);
     }
 
     private void CreateMesh(Vector2 bottomLeftCorner, Vector2 topRightCorner)
@@ -98,18 +104,30 @@ public class DungeonCreator : MonoBehaviour
             1,
             3
         };
+
         Mesh mesh = new Mesh();
         mesh.vertices = vertices;
         mesh.uv = uvs;
         mesh.triangles = triangles;
 
-        GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer));
+        GameObject dungeonFloor = new GameObject("Mesh" + bottomLeftCorner, typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider));
 
         dungeonFloor.transform.position = Vector3.zero;
         dungeonFloor.transform.localScale = Vector3.one;
         dungeonFloor.GetComponent<MeshFilter>().mesh = mesh;
         dungeonFloor.GetComponent<MeshRenderer>().material = material;
+        dungeonFloor.GetComponent<MeshCollider>().sharedMesh = mesh; // Add MeshCollider to the floor
         dungeonFloor.transform.parent = transform;
+
+        // Agregar posiciones válidas para objetos en el piso de la habitación
+        for (int x = Mathf.CeilToInt(bottomLeftV.x) + 1; x < Mathf.FloorToInt(topRightV.x); x++)
+        {
+            for (int z = Mathf.CeilToInt(bottomLeftV.z) + 1; z < Mathf.FloorToInt(topRightV.z); z++)
+            {
+                Vector3 floorPosition = new Vector3(x, 0, z);
+                validFloorPositions.Add(floorPosition);
+            }
+        }
 
         for (int row = (int)bottomLeftV.x; row < (int)bottomRightV.x; row++)
         {
@@ -136,7 +154,8 @@ public class DungeonCreator : MonoBehaviour
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
     {
         Vector3Int point = Vector3Int.CeilToInt(wallPosition);
-        if (wallList.Contains(point)){
+        if (wallList.Contains(point))
+        {
             doorList.Add(point);
             wallList.Remove(point);
         }
@@ -146,14 +165,28 @@ public class DungeonCreator : MonoBehaviour
         }
     }
 
+    private void GenerateRandomObjects()
+    {
+        for (int i = 0; i < numberOfRandomObjects; i++)
+        {
+            if (validFloorPositions.Count == 0 || randomObjectPrefabs.Length == 0) break;  // Salir si no hay posiciones válidas o prefabs disponibles
+            int randomIndex = UnityEngine.Random.Range(0, validFloorPositions.Count);
+            Vector3 randomPosition = validFloorPositions[randomIndex];
+            GameObject randomPrefab = randomObjectPrefabs[UnityEngine.Random.Range(0, randomObjectPrefabs.Length)];
+            Instantiate(randomPrefab, randomPosition, Quaternion.identity, transform);
+            validFloorPositions.RemoveAt(randomIndex);  // Eliminar la posición para evitar duplicados
+        }
+    }
+
     private void DestroyAllChildren()
     {
-        while(transform.childCount != 0)
+        while (transform.childCount != 0)
         {
-            foreach(Transform item in transform)
+            foreach (Transform item in transform)
             {
                 DestroyImmediate(item.gameObject);
             }
         }
     }
 }
+

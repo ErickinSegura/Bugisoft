@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: DobleBarrelShotgun
   m_EditorClassIdentifier: 
   weaponName: DobleBarrelShotgun
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 897538622635778469, guid: d23a8096a28feda43abefd7286bc584b, type: 3}
   damage: 100
-  fireRate: 0
+  fireRate: 0.5
   chargerammo: 2
   actualammo: 2
   reloadtime: 2
   upgrade: 
+  shootingSound: {fileID: 8300000, guid: e06e94db1f9f7e64e845e4a1670883d5, type: 3}
