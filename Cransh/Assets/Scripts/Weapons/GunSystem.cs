@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunSystem : MonoBehaviour
 {
+    private PlayerInput playerInput;
+    private InputAction shootAction;
+    private InputAction reloadAction;
+
     //Stats de las armas
     public int weaponDamage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
@@ -25,7 +30,6 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
 
-
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
     public CameraShake camShake;
@@ -35,39 +39,69 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+
+        playerInput = new PlayerInput();
+        shootAction = playerInput.OnFoot.Shoot;
+        reloadAction = playerInput.OnFoot.Reload;
+
+        shootAction.performed += ctx => StartShooting();
+        shootAction.canceled += ctx => StopShooting();
+        reloadAction.performed += ctx => Reload();
     }
+
+    private void OnEnable()
+    {
+        playerInput.OnFoot.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.OnFoot.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        shootAction.performed -= ctx => StartShooting();
+        shootAction.canceled -= ctx => StopShooting();
+        reloadAction.performed -= ctx => Reload();
+    }
+
     private void Update()
     {
         MyInput();
-        
     }
 
-    //Funcion para registrar los inputs del mouse y disparar
+    //Función para registrar los inputs del player y disparar
     private void MyInput()
     {
-        if (allowButtonHold)  isShooting = Input.GetKey(KeyCode.Mouse0);
-        else isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading) Reload();
-        
-        if (readyToShoot && isShooting &&  !isReloading && bulletsLeft > 0)
+        if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
         {
             bulletsShot = bulletsPerTap;
             Shoot(audioSource);
         }
     }
 
-    //Funcion para disparar
+    private void StartShooting()
+    {
+        isShooting = true;
+    }
+
+    private void StopShooting()
+    {
+        isShooting = false;
+    }
+
+    //Función para disparar
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
         bulletsLeft--;
 
         //Spread
-        float x = Random.Range(-spread,spread);
+        float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
-        
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x,y,0);
+
+        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
         //Disparar
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
@@ -106,11 +140,14 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-    //Funcion para recargar
+    //Función para recargar
     private void Reload()
     {
-        isReloading = true;
-        Invoke("reloadFinished", reloadTime);
+        if (bulletsLeft < magazineSize && !isReloading)
+        {
+            isReloading = true;
+            Invoke("reloadFinished", reloadTime);
+        }
     }
 
     private void reloadFinished()
@@ -123,5 +160,4 @@ public class GunSystem : MonoBehaviour
     {
         return bulletsLeft;
     }
-
 }
