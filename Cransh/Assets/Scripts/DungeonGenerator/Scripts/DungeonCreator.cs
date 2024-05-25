@@ -19,6 +19,8 @@ public class DungeonCreator : MonoBehaviour
     public GameObject wallVertical, wallHorizontal;
     public GameObject[] randomObjectPrefabs;  // Arreglo de prefabs de objetos aleatorios
     public int numberOfRandomObjects;         // Número de objetos aleatorios a generar
+    public GameObject[] propsPrefabs;         // Arreglo de prefabs de objetos
+    public int numberOfProps;                 // Número de objetos a generar
     List<Vector3Int> possibleDoorVerticalPosition;
     List<Vector3Int> possibleDoorHorizontalPosition;
     List<Vector3Int> possibleWallHorizontalPosition;
@@ -55,6 +57,7 @@ public class DungeonCreator : MonoBehaviour
         }
         CreateWalls(wallParent);
         GenerateRandomObjects();  // Generar objetos aleatorios
+        GenerateRandomProps();    // Generar objetos
     }
 
     private void CreateWalls(GameObject wallParent)
@@ -173,6 +176,19 @@ public class DungeonCreator : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, validFloorPositions.Count);
             Vector3 randomPosition = validFloorPositions[randomIndex];
             GameObject randomPrefab = randomObjectPrefabs[UnityEngine.Random.Range(0, randomObjectPrefabs.Length)];
+            Instantiate(randomPrefab, randomPosition, Quaternion.identity, transform);
+            validFloorPositions.RemoveAt(randomIndex);  // Eliminar la posición para evitar duplicados
+        }
+    }
+
+    private void GenerateRandomProps()
+    {
+        for (int i = 0; i < numberOfProps; i++)
+        {
+            if (validFloorPositions.Count == 0 || propsPrefabs.Length == 0) break;  // Salir si no hay posiciones válidas o prefabs disponibles
+            int randomIndex = UnityEngine.Random.Range(0, validFloorPositions.Count);
+            Vector3 randomPosition = validFloorPositions[randomIndex];
+            GameObject randomPrefab = propsPrefabs[UnityEngine.Random.Range(0, propsPrefabs.Length)];
             Instantiate(randomPrefab, randomPosition, Quaternion.identity, transform);
             validFloorPositions.RemoveAt(randomIndex);  // Eliminar la posición para evitar duplicados
         }
