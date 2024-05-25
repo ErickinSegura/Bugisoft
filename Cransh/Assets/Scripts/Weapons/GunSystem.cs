@@ -30,7 +30,6 @@ public class GunSystem : MonoBehaviour
     public GameObject muzzleFlash, bulletHoleGraphic;
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
-    public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -40,7 +39,7 @@ public class GunSystem : MonoBehaviour
     private void Update()
     {
         MyInput();
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        
     }
 
     //Funcion para registrar los inputs del mouse y disparar
@@ -118,6 +117,11 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+    }
+
+    public int getBulletsLeft()
+    {
+        return bulletsLeft;
     }
 
 }

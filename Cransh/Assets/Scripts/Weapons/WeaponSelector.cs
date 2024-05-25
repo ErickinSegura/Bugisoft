@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WeaponSelector : MonoBehaviour
@@ -9,17 +10,28 @@ public class WeaponSelector : MonoBehaviour
     public AudioSource audioSource; // Fuente de audio para los sonidos de disparo
     private int currentWeaponIndex = 0; // Índice del arma actual
     private GameObject currentWeaponInstance;
+    public TextMeshProUGUI text;
 
     void Start()
     {
         EquipWeapon(weapons[currentWeaponIndex]);
     }
 
+    private void Update()
+    {
+        HandleWeaponSwitch();
+        weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
+        text.SetText(weapons[currentWeaponIndex].GetComponent<GunSystem>().getBulletsLeft() + " / " + 
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().magazineSize);
+    }
+
     void HandleWeaponSwitch()
     {
+        
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
-        {
+        { 
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
             if (scroll > 0)
             {
                 currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
@@ -44,7 +56,9 @@ public class WeaponSelector : MonoBehaviour
         }
 
         currentWeaponInstance = Instantiate(selectedWeapon.weaponModel, weaponHoldPoint.position, weaponHoldPoint.rotation);
-        currentWeaponInstance.transform.parent = weaponHoldPoint;
+        currentWeaponInstance.transform.parent = weaponHoldPoint;        
+        weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
+
     }
 
     public void ChangeWeapon()

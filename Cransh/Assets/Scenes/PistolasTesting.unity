@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &405360293
 Transform:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405360292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
@@ -189,7 +189,6 @@ MonoBehaviour:
   camShake: {fileID: 0}
   camShakeMagnitude: 0
   camShakeDuration: 0
-  text: {fileID: 0}
 --- !u!1 &620184957
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &696063775
 Transform:
   m_ObjectHideFlags: 0
@@ -495,7 +494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696063774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
@@ -522,7 +521,6 @@ MonoBehaviour:
   camShake: {fileID: 0}
   camShakeMagnitude: 0
   camShakeDuration: 0
-  text: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &716113214
 Transform:
   m_ObjectHideFlags: 0
@@ -656,7 +654,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716113213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
@@ -683,7 +681,6 @@ MonoBehaviour:
   camShake: {fileID: 0}
   camShakeMagnitude: 0
   camShakeDuration: 0
-  text: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1013,12 @@ MonoBehaviour:
   weaponHoldPoint: {fileID: 1542007426}
   weapons:
   - {fileID: 1246416474}
+  - {fileID: 1776773837}
+  - {fileID: 405360294}
+  - {fileID: 696063776}
+  - {fileID: 716113215}
   audioSource: {fileID: 620184959}
+  text: {fileID: 1108981431}
 --- !u!1 &1108981429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246416472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
@@ -1217,7 +1219,6 @@ MonoBehaviour:
   camShake: {fileID: 963194229}
   camShakeMagnitude: 10
   camShakeDuration: 1
-  text: {fileID: 1108981431}
 --- !u!1 &1403799868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,10 +1249,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1246416473}
+  - {fileID: 1776773836}
   - {fileID: 405360293}
   - {fileID: 696063775}
   - {fileID: 716113214}
-  - {fileID: 1776773836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1464761756
@@ -1481,7 +1482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1776773836
 Transform:
   m_ObjectHideFlags: 0
@@ -1504,34 +1505,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776773835}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
-  allowButtonHold: 0
-  shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
-  audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  weaponDamage: 5
+  timeBetweenShooting: 0.1
+  spread: 0.09
+  range: 100
+  reloadTime: 10
+  timeBetweenShots: 0.1
+  magazineSize: 300
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  shootingSound: {fileID: 8300000, guid: 895b1ba52f7a23649bea6db99f961be1, type: 3}
+  weaponModel: {fileID: 3478977068410880653, guid: 98ba4fe7822ca91449b5681cabff1ada, type: 3}
+  audioSource: {fileID: 620184959}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1542007426}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
-  camShakeDuration: 0
-  text: {fileID: 0}
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
 --- !u!1 &1850533632
 GameObject:
   m_ObjectHideFlags: 0
