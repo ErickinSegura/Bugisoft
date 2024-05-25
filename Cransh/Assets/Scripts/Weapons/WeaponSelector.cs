@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponSelector : MonoBehaviour
 {
     public Transform weaponHoldPoint; // Punto donde se sujetará el arma
-    public WeaponClass[] weapons; // Lista de armas disponibles
+    public GunSystem[] weapons; // Lista de armas disponibles
     public AudioSource audioSource; // Fuente de audio para los sonidos de disparo
     private int currentWeaponIndex = 0; // Índice del arma actual
     private GameObject currentWeaponInstance;
@@ -13,22 +13,6 @@ public class WeaponSelector : MonoBehaviour
     void Start()
     {
         EquipWeapon(weapons[currentWeaponIndex]);
-    }
-
-    void Update()
-    {
-        HandleWeaponSwitch();
-        ChangeWeapon();
-
-        if (Input.GetButton("Fire1") && !weapons[currentWeaponIndex].IsReloading())
-        {
-            weapons[currentWeaponIndex].Shoot(audioSource);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && !weapons[currentWeaponIndex].IsReloading())
-        {
-            StartCoroutine(weapons[currentWeaponIndex].Reload());
-        }
     }
 
     void HandleWeaponSwitch()
@@ -52,7 +36,7 @@ public class WeaponSelector : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(WeaponClass selectedWeapon)
+    public void EquipWeapon(GunSystem selectedWeapon)
     {
         if (currentWeaponInstance != null)
         {

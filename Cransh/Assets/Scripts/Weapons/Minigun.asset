@@ -17,6 +17,7 @@ MonoBehaviour:
   damage: 2
   fireRate: 0.1
   chargerammo: 300
-  actualammo: 286
+  actualammo: 283
   reloadtime: 8
   upgrade: 
+  shootingSound: {fileID: 8300000, guid: 895b1ba52f7a23649bea6db99f961be1, type: 3}
