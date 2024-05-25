@@ -1,14 +1,14 @@
 {
-    "name": "PlayerInput",
+    "name": "Player Input",
     "maps": [
         {
             "name": "OnFoot",
-            "id": "eb230d57-2e61-43bc-abf2-17e91b406318",
+            "id": "af8734f4-a878-4ddb-96a8-e765498fb431",
             "actions": [
                 {
                     "name": "Movement",
                     "type": "Value",
-                    "id": "2c2b4e01-a6f2-49c8-8d94-96efde6e6f05",
+                    "id": "4e1bfaab-3802-4f16-af06-2026b09009ab",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,28 +17,35 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "b4d261a3-836d-4922-a71c-844006ac8a51",
-                    "expectedControlType": "Vector2",
+                    "id": "9f46360e-0dbd-4be3-85a0-ea8803db17c7",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Value",
+                    "id": "41f04069-01fb-4e0a-aa1c-820d0052b559",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "9c8760eb-94d2-4a6a-82b2-b77dae8551b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "15d0a729-fb66-40b2-b132-1c904e529e84",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "Keyboard",
-                    "id": "d52ab75b-eac0-46e9-a829-03122637248c",
+                    "id": "df0256df-7d3a-4a8c-9f78-9729062c2578",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -49,7 +56,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "259c63b7-d5ae-4eb4-aca4-2460df320fed",
+                    "id": "38b5ace3-1807-420a-942e-b84c60a4af8e",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -60,7 +67,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "52c7b051-ec89-41d2-a601-d761c7b1f4a8",
+                    "id": "a3e848da-0054-4dca-b3bf-e5fe2af67e1d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -71,7 +78,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "151e7d45-2f33-4861-81e4-765f4d9d50cd",
+                    "id": "b39e3e29-16b9-47b1-a4e2-f911144a1c20",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -82,7 +89,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "c59282e2-8c3e-4ef9-b959-924190cf4c44",
+                    "id": "2b224b49-42e4-4f7a-a504-5613669c6c9d",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -92,8 +99,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Control",
-                    "id": "30c82162-22ef-44ce-b9af-675cb3dad520",
+                    "name": "Controller",
+                    "id": "bda2b8e2-4e90-44d6-9149-103b08718b0e",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -104,7 +111,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "30e2d80e-ce9e-4ea1-89e3-fdc7f3e160dc",
+                    "id": "1503d45a-4447-4fba-b6d6-3058dbaac2e6",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
@@ -115,7 +122,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "e9cfdbb6-8897-452a-98fd-83b718fd09c8",
+                    "id": "59e95a35-e093-4a69-8318-2c80b9b5bf3a",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
@@ -126,7 +133,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "5b23d2d0-37aa-43db-b0ed-3858204f5fa2",
+                    "id": "f20f5399-c528-4a4b-8e87-4cb8bf1fd382",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
@@ -137,7 +144,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "0efc7fc1-0946-41c3-8a7f-49ca637a786b",
+                    "id": "04b4b8dc-6ae5-4048-b15b-22cc13f6490a",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
@@ -148,7 +155,7 @@
                 },
                 {
                     "name": "",
-                    "id": "7c558a78-8ac9-4bc6-8393-302291cc746d",
+                    "id": "7e9eb5e6-b9a9-4920-a168-c0a6735be88d",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
@@ -159,12 +166,56 @@
                 },
                 {
                     "name": "",
-                    "id": "c81df434-bcd8-4bb8-b4d6-0b4a3e1e97ec",
+                    "id": "f1f624f8-0c0a-48bd-bb4b-b967dbdbe6be",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cee0168-d538-4618-9b1f-86d3c97a68f9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49cad07a-6b1b-4d60-8a49-cae144cb0daa",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d3a7118-b0db-4566-81eb-95b8099fc31c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eab946de-44a5-4126-9a82-63de934281f4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
