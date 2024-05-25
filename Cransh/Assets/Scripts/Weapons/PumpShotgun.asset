@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PumpShotgun
   m_EditorClassIdentifier: 
   weaponName: PumpShotgun
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 646948039530579991, guid: c9c15480150b39f4fb9f56b207eb57cf, type: 3}
   damage: 100
   fireRate: 1.3
   chargerammo: 5
-  actualammo: 5
+  actualammo: 0
   reloadtime: 0
   upgrade: 
