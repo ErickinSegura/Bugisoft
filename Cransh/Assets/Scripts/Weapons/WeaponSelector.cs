@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSelector : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class WeaponSelector : MonoBehaviour
     private int currentWeaponIndex = 0; // Índice del arma actual
     private GameObject currentWeaponInstance;
     public TextMeshProUGUI text;
+
+    // Referencia al slider de la barra de munición
+    public Slider ammoSlider;
 
     void Start()
     {
@@ -59,6 +63,11 @@ public class WeaponSelector : MonoBehaviour
         currentWeaponInstance.transform.parent = weaponHoldPoint;        
         weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
 
+        // Pasar la referencia del slider al sistema de armas
+        weapons[currentWeaponIndex].ammoSlider = ammoSlider;
+
+        // Actualizar la barra de munición al cambiar de arma
+        weapons[currentWeaponIndex].UpdateAmmoUI();
     }
 
     public void ChangeWeapon()

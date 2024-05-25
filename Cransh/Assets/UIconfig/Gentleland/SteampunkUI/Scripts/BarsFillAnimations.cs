@@ -28,7 +28,7 @@ namespace Gentleland.StemapunkUI.DemoAndExample
         void Update()
         {
             
-          
+          /*
             for (int i = 0; i < sliders.Length; i++)
             {
                 float fill;
@@ -43,7 +43,7 @@ namespace Gentleland.StemapunkUI.DemoAndExample
                 }
                 sliders[i].value = fill;
             }
-            
+            */
         }
     }
 }

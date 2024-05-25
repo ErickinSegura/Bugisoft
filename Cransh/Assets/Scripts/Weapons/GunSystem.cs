@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GunSystem : MonoBehaviour
 {
@@ -31,13 +33,26 @@ public class GunSystem : MonoBehaviour
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
 
+    // Referencia al slider de la barra de munición
+    public Slider ammoSlider;
+    // Referencia al Image del Fill del slider para cambiar su color
+    public Image ammoFillImage;
+
+    // Colores para la recarga
+    public Color reloadColor = new Color(0xAD / 255f, 0x21 / 255f, 0x00 / 255f); // #AD2100
+    Color white = Color.white;
+    public Color normalColor = new Color(0f, 250f / 255f, 255f / 255f); // #00FAFF
+    // Color azulClaro = new Color(0f, 250f / 255f, 255f / 255f);
+
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        UpdateAmmoUI();
     }
     private void Update()
     {
+        // ammoFillImage.color = azulClaro;
         MyInput();
         
     }
@@ -95,6 +110,8 @@ public class GunSystem : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
+        UpdateAmmoUI();
+
         Invoke("ResetShoot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
@@ -111,17 +128,53 @@ public class GunSystem : MonoBehaviour
     {
         isReloading = true;
         Invoke("reloadFinished", reloadTime);
+
+        // Actualizar UI durante la recarga
+        StartCoroutine(ReloadUIUpdate());
     }
 
     private void reloadFinished()
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+        UpdateAmmoUI();
     }
 
     public int getBulletsLeft()
     {
         return bulletsLeft;
+    }
+
+    private IEnumerator ReloadUIUpdate()
+    {
+        float elapsedTime = 0;
+        ammoFillImage.color = white;
+        //ammoFillImage.color = reloadColor;
+
+        while (elapsedTime < reloadTime)
+        {
+            elapsedTime += Time.deltaTime;
+            ammoSlider.value = Mathf.Lerp(0, 1, elapsedTime / reloadTime);
+            yield return null; // Esperar un frame
+        }
+
+        //ammoFillImage.color = white;
+        FinishReload();
+        UpdateAmmoUI();
+    }
+
+    private void FinishReload()
+    {
+        ammoFillImage.color = white;
+        ammoSlider.fillRect.GetComponent<Image>().color = normalColor;
+    }
+
+    public void UpdateAmmoUI()
+    {
+        if (ammoSlider != null)
+        {
+            ammoSlider.value = (float)bulletsLeft / magazineSize;
+        }
     }
 
 }
