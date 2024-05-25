@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,6 +342,18 @@ PrefabInstance:
     - target: {fileID: 6088150558106101818, guid: 310d0a06178f3044e86a615e9cb3eb08, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650786059391518561, guid: 310d0a06178f3044e86a615e9cb3eb08, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 158433136}
+    - target: {fileID: 6650786059391518561, guid: 310d0a06178f3044e86a615e9cb3eb08, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 0db963e051030ff41bf56ded74ff1570, type: 3}
+    - target: {fileID: 6650786059391518561, guid: 310d0a06178f3044e86a615e9cb3eb08, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: OnFoot
       objectReference: {fileID: 0}
     - target: {fileID: 7069639731098883098, guid: 310d0a06178f3044e86a615e9cb3eb08, type: 3}
       propertyPath: m_LocalPosition.x
