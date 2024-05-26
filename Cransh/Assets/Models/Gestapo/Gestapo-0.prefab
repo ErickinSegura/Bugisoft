@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5626365959875219541}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -8469494145858465668, guid: de2fbc616a8ae824e92d631f82451b1e, type: 3}
-  - {fileID: 2100000, guid: 094e76e620df5714eb3946120657e1f6, type: 2}
+  - {fileID: -8469494145858465668, guid: 6a132fa3841250147b7726ac62e65cc4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 5173893902708425464}
   m_Layer: 0
   m_Name: Gestapo-0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
