@@ -5,7 +5,7 @@ using UnityEngine;
 public class DungeonStartBattle : MonoBehaviour
 {
     public GameObject[] EnemiesPrefab;  // Prefabs de los enemigos a generar
-    public int numberOfEnemies;         // Número de enemigos a generar
+    private int numberOfEnemies = 10;         // Número de enemigos a generar
     public float minColliderSize = 20f;  // Tamaño mínimo del collider para activar la batalla
 
     public bool isBattleActive;         // Indica si la batalla está activa
@@ -16,6 +16,7 @@ public class DungeonStartBattle : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        PlayerPrefs.SetInt("checkPlayer", 0);
     }
 
     void Start()
@@ -26,9 +27,6 @@ public class DungeonStartBattle : MonoBehaviour
         }
 
         // Generar paredes alrededor del collider
-
-
-
     }
 
     public void Update()
@@ -41,12 +39,19 @@ public class DungeonStartBattle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (PlayerPrefs.GetInt("checkPlayer") == 1)
         {
-            Debug.Log("Battle Start");
-            GenerateEnemiesInArea();
-
-            GenerateWalls();
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Battle Start");
+                GenerateEnemiesInArea();
+                //GenerateWalls();
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("checkPlayer", 1);
+            Destroy(gameObject);
         }
     }
 
@@ -97,10 +102,6 @@ public class DungeonStartBattle : MonoBehaviour
             wall.transform.localScale = wallSize;
         }
     }
-
-
-
-
 
 
     private Vector3 GenerateRandomPositionInsideCollider()

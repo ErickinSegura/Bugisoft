@@ -120,10 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesPrefab:
-  - {fileID: -927199367670048503, guid: d444633021854cc4eb2ada548c5b7dd6, type: 3}
-  - {fileID: -927199367670048503, guid: f2139ea826ce55b4cbabf78e40f59891, type: 3}
-  - {fileID: -927199367670048503, guid: 08cd3483cf265ed4f9d4e21fa0299662, type: 3}
-  - {fileID: -927199367670048503, guid: 6916f642e2d273d41a8b7257b101d58a, type: 3}
+  - {fileID: 8398606345016057668, guid: ad692672a49e8474895e1adf9a6301be, type: 3}
+  - {fileID: 5514250628241463362, guid: a77a43bb9a7cc90438e8af23c7f042fb, type: 3}
   numberOfEnemies: 10
   minColliderSize: 20
   isBattleActive: 0
