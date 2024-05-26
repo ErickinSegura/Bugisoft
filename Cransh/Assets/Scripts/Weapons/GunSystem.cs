@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-<<<<<<< Updated upstream
-=======
 using UnityEngine.UI;
->>>>>>> Stashed changes
 using UnityEngine.InputSystem;
 
 public class GunSystem : MonoBehaviour
@@ -15,11 +12,7 @@ public class GunSystem : MonoBehaviour
     private InputAction reloadAction;
     private InputAction cancelingReload;
 
-<<<<<<< Updated upstream
-    //Stats de las armas
-=======
     // Stats de las armas
->>>>>>> Stashed changes
     public int weaponDamage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
@@ -30,12 +23,6 @@ public class GunSystem : MonoBehaviour
     public AudioClip shootingSound;     // Sonido de disparo
     public GameObject weaponModel;      // Apariencia del arma
     public AudioSource audioSource;     // Lugar de donde se disparan las balas
-<<<<<<< Updated upstream
-
-    //Verificadores
-    bool isShooting, readyToShoot, isReloading, cancelReload;
-=======
->>>>>>> Stashed changes
 
     // Verificadores
     bool isShooting, readyToShoot, isReloading, cancelReload;
@@ -46,17 +33,11 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
 
-<<<<<<< Updated upstream
-    //Graphics
-=======
     // Graphics
->>>>>>> Stashed changes
     public GameObject muzzleFlash, bulletHoleGraphic;
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
 
-<<<<<<< Updated upstream
-=======
     // Referencia al slider de la barra de munición
     public Slider ammoSlider;
     // Referencia al Image del Fill del slider para cambiar su color
@@ -70,27 +51,19 @@ public class GunSystem : MonoBehaviour
     private TimeStopAbility timeStopAbility; // Referencia a la habilidad de detener el tiempo
     public GameObject bulletPrefab; // Prefab de la bala para mostrarla detenida
 
->>>>>>> Stashed changes
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
         cancelReload = false;
-<<<<<<< Updated upstream
-=======
         UpdateAmmoUI();
         timeStopAbility = FindObjectOfType<TimeStopAbility>(); // Obtener la referencia a TimeStopAbility
->>>>>>> Stashed changes
 
         playerInput = new PlayerInput();
         shootAction = playerInput.OnFoot.Shoot;
         reloadAction = playerInput.OnFoot.Reload;
         cancelingReload = playerInput.OnFoot.CancelReloading;
-<<<<<<< Updated upstream
-        
-=======
 
->>>>>>> Stashed changes
         shootAction.performed += ctx => StartShooting();
         shootAction.canceled += ctx => StopShooting();
         reloadAction.performed += ctx => Reload();
@@ -120,11 +93,7 @@ public class GunSystem : MonoBehaviour
         MyInput();
     }
 
-<<<<<<< Updated upstream
-    //FunciÃ³n para registrar los inputs del player y disparar
-=======
     // Función para registrar los inputs del player y disparar
->>>>>>> Stashed changes
     private void MyInput()
     {
         if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
@@ -144,27 +113,15 @@ public class GunSystem : MonoBehaviour
         isShooting = false;
     }
 
-<<<<<<< Updated upstream
-    //FunciÃ³n para disparar
-=======
     // Función para disparar
->>>>>>> Stashed changes
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
         bulletsLeft--;
 
-<<<<<<< Updated upstream
-        //Spread
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
-
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
-=======
         // Spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
->>>>>>> Stashed changes
 
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
@@ -174,7 +131,7 @@ public class GunSystem : MonoBehaviour
             Debug.Log(rayHit.collider.name);
             if (rayHit.collider.CompareTag("Enemy"))
             {
-                rayHit.collider.GetComponent<ShootingAi>().TakenDamage(weaponDamage);
+                //rayHit.collider.GetComponent<ShootingAi>().TakenDamage(weaponDamage);
             }
             else if (rayHit.collider.CompareTag("Player"))
             {
@@ -205,6 +162,8 @@ public class GunSystem : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
+        UpdateAmmoUI();
+
         Invoke("ResetShoot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
@@ -216,11 +175,7 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-<<<<<<< Updated upstream
-    //FunciÃ³n para recargar
-=======
     // Función para recargar
->>>>>>> Stashed changes
     private void Reload()
     {
         if (bulletsLeft < magazineSize && !isReloading && !cancelReload)
@@ -229,14 +184,6 @@ public class GunSystem : MonoBehaviour
             cancelReload = false;
             Invoke("reloadFinished", reloadTime);
             Debug.Log("Recargado");
-<<<<<<< Updated upstream
-        }
-    }
-
-    private void CancelReload()
-    {
-        if (isReloading && !cancelReload) 
-=======
 
             // Actualizar UI durante la recarga
             StartCoroutine(ReloadUIUpdate());
@@ -246,13 +193,15 @@ public class GunSystem : MonoBehaviour
     private void CancelReload()
     {
         if (isReloading && !cancelReload)
->>>>>>> Stashed changes
         {
             isReloading = false;
             cancelReload = true;
             CancelInvoke("reloadFinished");
             cancelReload = false;
             Debug.Log("Recarga cancelada");
+            StopAllCoroutines();
+            UpdateAmmoUI();
+            ammoFillImage.color = normalColor;
         }
     }
 
@@ -260,19 +209,9 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+        UpdateAmmoUI();
     }
 
-<<<<<<< Updated upstream
-    public int getBulletsLeft()
-    {
-        return bulletsLeft;
-    }
-
-    public bool getIsReloading()
-    {
-        return isReloading;
-    }
-=======
     private IEnumerator ReloadUIUpdate()
     {
         float elapsedTime = 0;
@@ -314,5 +253,4 @@ public class GunSystem : MonoBehaviour
     {
         return isReloading;
     }
->>>>>>> Stashed changes
 }
