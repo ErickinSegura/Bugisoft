@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelReloading"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e6e1a36-39c8-4d70-8e95-0b54decac1bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -280,6 +289,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""ChangePreviousWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b635135-fee3-4862-b0c6-8153ff0b3d9b"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangePreviousWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd23f2a7-031b-403f-8daf-7c10e6ac9b1f"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelReloading"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2ee46c8-3b8a-463c-95d1-bfd65a88e670"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelReloading"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -294,6 +336,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         m_OnFoot_ChangeNextWeapon = m_OnFoot.FindAction("ChangeNextWeapon", throwIfNotFound: true);
         m_OnFoot_ChangePreviousWeapon = m_OnFoot.FindAction("ChangePreviousWeapon", throwIfNotFound: true);
+        m_OnFoot_CancelReloading = m_OnFoot.FindAction("CancelReloading", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +404,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Reload;
     private readonly InputAction m_OnFoot_ChangeNextWeapon;
     private readonly InputAction m_OnFoot_ChangePreviousWeapon;
+    private readonly InputAction m_OnFoot_CancelReloading;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -371,6 +415,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_OnFoot_Reload;
         public InputAction @ChangeNextWeapon => m_Wrapper.m_OnFoot_ChangeNextWeapon;
         public InputAction @ChangePreviousWeapon => m_Wrapper.m_OnFoot_ChangePreviousWeapon;
+        public InputAction @CancelReloading => m_Wrapper.m_OnFoot_CancelReloading;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -398,6 +443,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChangePreviousWeapon.started += instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.performed += instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.canceled += instance.OnChangePreviousWeapon;
+            @CancelReloading.started += instance.OnCancelReloading;
+            @CancelReloading.performed += instance.OnCancelReloading;
+            @CancelReloading.canceled += instance.OnCancelReloading;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -420,6 +468,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChangePreviousWeapon.started -= instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.performed -= instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.canceled -= instance.OnChangePreviousWeapon;
+            @CancelReloading.started -= instance.OnCancelReloading;
+            @CancelReloading.performed -= instance.OnCancelReloading;
+            @CancelReloading.canceled -= instance.OnCancelReloading;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -445,5 +496,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnChangeNextWeapon(InputAction.CallbackContext context);
         void OnChangePreviousWeapon(InputAction.CallbackContext context);
+        void OnCancelReloading(InputAction.CallbackContext context);
     }
 }
