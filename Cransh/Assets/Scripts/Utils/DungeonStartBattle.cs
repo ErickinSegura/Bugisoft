@@ -13,6 +13,14 @@ public class DungeonStartBattle : MonoBehaviour
 
     public static DungeonStartBattle instance;     // Instancia de la clase
 
+    private bool isRoomClosed;
+    private bool isWallsDestroyed = false;
+
+    public Vector3 manualRotationHorizontal = Vector3.zero; // Rotación manual para paredes horizontales
+    public Vector3 manualRotationVertical = Vector3.zero; // Rotación manual para paredes verticales
+
+    private bool isPlayerInside = false; // Para verificar si el jugador está dentro del collider
+
     public void Awake()
     {
         instance = this;
@@ -20,15 +28,11 @@ public class DungeonStartBattle : MonoBehaviour
 
     void Start()
     {
+        isRoomClosed = false;
         if (GetComponent<BoxCollider>().size.magnitude < minColliderSize)
         {
             Destroy(gameObject);
         }
-
-        // Generar paredes alrededor del collider
-
-
-
     }
 
     public void Update()
@@ -37,16 +41,24 @@ public class DungeonStartBattle : MonoBehaviour
         {
             CheckEnemies();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isPlayerInside)
+        {
+            Debug.Log("Player is inside and space key pressed");
+            BattleEnd();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isRoomClosed)
         {
             Debug.Log("Battle Start");
+            isRoomClosed = true;
             GenerateEnemiesInArea();
-
             GenerateWalls();
+            isPlayerInside = true;
         }
     }
 
@@ -66,42 +78,57 @@ public class DungeonStartBattle : MonoBehaviour
     {
         BoxCollider collider = GetComponent<BoxCollider>();
         Vector3 colliderSize = collider.size;
-        Vector3 colliderCenter = collider.center;
+        Vector3 colliderCenter = transform.TransformPoint(collider.center);
 
-        // Determinar la orientación del pasillo
-        bool isHorizontal = colliderSize.x > colliderSize.z;
+        // Calcular las posiciones de las esquinas del BoxCollider en el espacio global
+        Vector3 topLeft = colliderCenter + transform.TransformVector(new Vector3(-colliderSize.x / 2, 0, colliderSize.z / 2));
+        Vector3 topRight = colliderCenter + transform.TransformVector(new Vector3(colliderSize.x / 2, 0, colliderSize.z / 2));
+        Vector3 bottomLeft = colliderCenter + transform.TransformVector(new Vector3(-colliderSize.x / 2, 0, -colliderSize.z / 2));
+        Vector3 bottomRight = colliderCenter + transform.TransformVector(new Vector3(colliderSize.x / 2, 0, -colliderSize.z / 2));
 
-        // Calcular la mitad del tamaño de la pared
-        Vector3 wallSize = isHorizontal ? new Vector3(colliderSize.x, colliderSize.y, 0.1f) : new Vector3(0.1f, colliderSize.y, colliderSize.z);
-
-        // Instanciar las paredes dentro del objeto padre
-        for (int i = 0; i < 2; i++)
-        {
-            Vector3 wallPosition;
-            Quaternion wallRotation;
-
-            if (isHorizontal)
-            {
-                float xPos = colliderCenter.x + (i == 0 ? -colliderSize.x / 2f : colliderSize.x / 2f);
-                wallPosition = new Vector3(xPos, colliderCenter.y, colliderCenter.z);
-                wallRotation = Quaternion.identity; // Sin rotación
-            }
-            else
-            {
-                float zPos = colliderCenter.z + (i == 0 ? -colliderSize.z / 2f : colliderSize.z / 2f);
-                wallPosition = new Vector3(colliderCenter.x, colliderCenter.y, zPos);
-                wallRotation = Quaternion.Euler(0, 90, 0); // Girar verticalmente
-            }
-
-            GameObject wall = Instantiate(wallPrefab, wallPosition, wallRotation, transform);
-            wall.transform.localScale = wallSize;
-        }
+        // Crear las paredes
+        InstantiateWall(topLeft, topRight, colliderSize.y, true); // Pared superior
+        InstantiateWall(topRight, bottomRight, colliderSize.y, false); // Pared derecha
+        InstantiateWall(bottomRight, bottomLeft, colliderSize.y, true); // Pared inferior
+        InstantiateWall(bottomLeft, topLeft, colliderSize.y, false); // Pared izquierda
     }
 
+    private void InstantiateWall(Vector3 start, Vector3 end, float height, bool isHorizontal)
+    {
+        Vector3 position = (start + end) / 2;
 
+        Debug.Log("Pos: " + position);
 
+        Vector3 direction = end - start;
+        Quaternion rotation;
+        Vector3 scale;
 
+        if (isHorizontal)
+        {
+            // Aplicar rotación manual para paredes horizontales
+            rotation = Quaternion.Euler(manualRotationHorizontal);
+            scale = new Vector3(direction.magnitude * 5, height, 0.1f);
+            Debug.Log("hor " + scale);
+        }
+        else
+        {
+            // Aplicar rotación manual para paredes verticales
+            rotation = Quaternion.Euler(manualRotationVertical);
+            scale = new Vector3(0.1f, height, direction.magnitude);
+            Debug.Log("ver " + scale);
 
+        }
+
+        if(isHorizontal)
+        {
+            if(((start.x + end.x) / 2) > start.x) position = start;
+            else position = end;
+        }
+
+        GameObject wall = Instantiate(wallPrefab, position, rotation, transform);
+        wall.transform.localScale = scale;
+        wall.tag = "Wall";
+    }
 
     private Vector3 GenerateRandomPositionInsideCollider()
     {
@@ -120,13 +147,29 @@ public class DungeonStartBattle : MonoBehaviour
     {
         if (transform.childCount <= 4)
         {
-            BatlleEnd();
+            BattleEnd();
         }
     }
 
-    public void BatlleEnd()
+    public void BattleEnd()
     {
         Debug.Log("Battle End");
-        Destroy(gameObject);
+        if (!isWallsDestroyed)
+        {
+            DestroyWalls();
+            isWallsDestroyed = true;
+        }
+        isBattleActive = false;
+    }
+
+    private void DestroyWalls()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Wall"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }

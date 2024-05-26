@@ -58,6 +58,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ChangePreviousWeapon",
+                    "type": "Button",
+                    "id": "f5c88689-14da-46b1-bfaa-1fc2ccd47f87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeNextWeapon",
+                    "type": "Button",
+                    "id": "201c63f6-8731-4fc5-a9da-a9327a1f7b41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -278,6 +296,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "CancelReloading",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a008b0d-c412-4228-ad14-520e12f44f91",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePreviousWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88d74a7a-21d2-4e11-95fe-a047fa825546",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeNextWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
