@@ -167,28 +167,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
+  weaponDamage: 65
+  timeBetweenShooting: 1
+  spread: 0.1
+  range: 80
+  reloadTime: 5
+  timeBetweenShots: 2
+  magazineSize: 24
+  bulletsPerTap: 6
   allowButtonHold: 0
-  shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
-  audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: dd9a17f6ef816de4f8b1c5cb3f1b0b44, type: 3}
+  weaponModel: {fileID: 6168403364605918938, guid: 548db0dc6b50d784a9b38aaa0d059e41, type: 3}
+  audioSource: {fileID: 620184959}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1411149981}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
-  camShakeDuration: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
 --- !u!1 &620184957
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1411149981}
   - {fileID: 1074598522}
   - {fileID: 963194228}
   - {fileID: 620184958}
@@ -499,28 +500,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
+  weaponDamage: 45
+  timeBetweenShooting: 0.1
+  spread: 0.03
+  range: 100
+  reloadTime: 1.5
+  timeBetweenShots: 1
+  magazineSize: 32
+  bulletsPerTap: 1
   allowButtonHold: 0
-  shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
-  audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: 91086b4ebda796a478f9c1b457cfd2ca, type: 3}
+  weaponModel: {fileID: 8162686215796192825, guid: 9cac0eb2fbb20ab48967f50566c50285, type: 3}
+  audioSource: {fileID: 620184959}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1411149981}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
-  camShakeDuration: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,28 +660,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
+  weaponDamage: 50
+  timeBetweenShooting: 1.2
+  spread: 0.01
+  range: 100
+  reloadTime: 5
+  timeBetweenShots: 1
+  magazineSize: 6
+  bulletsPerTap: 1
   allowButtonHold: 0
-  shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
-  audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: 3bc2ffedcd64d3d4d8c3254d3f0cd56a, type: 3}
+  weaponModel: {fileID: 6492786072240423912, guid: b1467d437fb03e14dabbe74689ea2c33, type: 3}
+  audioSource: {fileID: 620184959}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1411149981}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
-  camShakeDuration: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 1074598521}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.528, y: -0.0710001, z: 0.49800003}
+  m_LocalPosition: {x: 0.591, y: -0.0710001, z: 0.387}
   m_LocalScale: {x: 0.099999994, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -968,7 +969,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32f5c0ff2b6e6bc499928574b81e1ca9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1012,9 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHoldPoint: {fileID: 1542007426}
   weapons:
-  - {fileID: 1246416474}
-  - {fileID: 1776773837}
   - {fileID: 405360294}
+  - {fileID: 1776773837}
   - {fileID: 696063776}
   - {fileID: 716113215}
   audioSource: {fileID: 620184959}
@@ -1169,7 +1169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1246416473
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   weaponModel: {fileID: 897538622635778469, guid: d23a8096a28feda43abefd7286bc584b, type: 3}
   audioSource: {fileID: 620184959}
   fpsCam: {fileID: 963194227}
-  attackPoint: {fileID: 1542007426}
+  attackPoint: {fileID: 1411149981}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1255,6 +1255,111 @@ Transform:
   - {fileID: 716113214}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1411149980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411149981}
+  - component: {fileID: 1411149984}
+  - component: {fileID: 1411149983}
+  - component: {fileID: 1411149982}
+  m_Layer: 0
+  m_Name: Shootingpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1411149981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411149980}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.492, y: 0.092, z: 1.351}
+  m_LocalScale: {x: 0.099999994, y: 0.10000001, z: 0.10000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 631494226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1411149982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411149980}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1411149983
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411149980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 32f5c0ff2b6e6bc499928574b81e1ca9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1411149984
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411149980}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1464761756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,10 +1625,10 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   shootingSound: {fileID: 8300000, guid: 895b1ba52f7a23649bea6db99f961be1, type: 3}
-  weaponModel: {fileID: 3478977068410880653, guid: 98ba4fe7822ca91449b5681cabff1ada, type: 3}
+  weaponModel: {fileID: 5512881598159730979, guid: 0c4bddd927941e54ca7c20bf391bc3d0, type: 3}
   audioSource: {fileID: 620184959}
   fpsCam: {fileID: 963194227}
-  attackPoint: {fileID: 1542007426}
+  attackPoint: {fileID: 1411149981}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295

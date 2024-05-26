@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Cransh/Assets/ModelWeapons2.meta
+guid: 9f50687e46fe81f448231dbe740c9520
+========
+guid: 42bbb6797d9b2b64c9c69824e7e3213b
+>>>>>>>> cf3cb654be9b21dc5a57d1ee46bd12435b43f953:Cransh/Assets/SFX.meta
+=======
+guid: 42bbb6797d9b2b64c9c69824e7e3213b
+>>>>>>> eb9587cc21b140b7ddc5c9534f366afe8d70462e
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
