@@ -38,11 +38,7 @@ public class GunSystem : MonoBehaviour
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
 
-<<<<<<< Updated upstream
-    // Referencia al slider de la barra de munición
-=======
     // Referencia al slider de la barra de municiï¿½n
->>>>>>> Stashed changes
     public Slider ammoSlider;
     // Referencia al Image del Fill del slider para cambiar su color
     public Image ammoFillImage;
@@ -97,11 +93,7 @@ public class GunSystem : MonoBehaviour
         MyInput();
     }
 
-<<<<<<< Updated upstream
-    // Función para registrar los inputs del player y disparar
-=======
     // Funciï¿½n para registrar los inputs del player y disparar
->>>>>>> Stashed changes
     private void MyInput()
     {
         if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
@@ -121,11 +113,7 @@ public class GunSystem : MonoBehaviour
         isShooting = false;
     }
 
-<<<<<<< Updated upstream
-    // Función para disparar
-=======
     // Funciï¿½n para disparar
->>>>>>> Stashed changes
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
@@ -187,11 +175,7 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-<<<<<<< Updated upstream
-    // Función para recargar
-=======
     // Funciï¿½n para recargar
->>>>>>> Stashed changes
     private void Reload()
     {
         if (bulletsLeft < magazineSize && !isReloading && !cancelReload)
@@ -269,8 +253,4 @@ public class GunSystem : MonoBehaviour
     {
         return isReloading;
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
