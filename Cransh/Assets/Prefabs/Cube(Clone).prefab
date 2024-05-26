@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6613547245134760329}
   - component: {fileID: 7044286246083870052}
   - component: {fileID: 6556500075130232259}
-  - component: {fileID: 7560578183377192232}
   m_Layer: 0
   m_Name: Cube(Clone)
   m_TagString: Untagged
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32f5c0ff2b6e6bc499928574b81e1ca9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,30 +127,3 @@ MonoBehaviour:
   wallPrefab: {fileID: 244777335584115285, guid: cedcfa858673fc241bc8c2f47297b600, type: 3}
   manualRotationHorizontal: {x: 0, y: 0, z: 0}
   manualRotationVertical: {x: 0, y: 0, z: 0}
---- !u!54 &7560578183377192232
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6634501986102971190}
-  serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 36
-  m_CollisionDetection: 2

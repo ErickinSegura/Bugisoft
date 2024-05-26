@@ -13,7 +13,6 @@ public class DungeonStartBattle : MonoBehaviour
 
     public static DungeonStartBattle instance;     // Instancia de la clase
 
-    private bool isRoomClosed;
     private bool isWallsDestroyed = false;
 
     public Vector3 manualRotationHorizontal = Vector3.zero; // Rotación manual para paredes horizontales
@@ -28,7 +27,6 @@ public class DungeonStartBattle : MonoBehaviour
 
     void Start()
     {
-        isRoomClosed = false;
         if (GetComponent<BoxCollider>().size.magnitude < minColliderSize)
         {
             Destroy(gameObject);
@@ -50,17 +48,18 @@ public class DungeonStartBattle : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isRoomClosed)
+        Debug.Log("OnTriggerEnter called with: " + other.gameObject.name);
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Battle Start");
-            isRoomClosed = true;
+            Debug.Log("Player detected, starting battle");
+            isPlayerInside = true;  // Mover esta línea antes de generar enemigos y paredes
             GenerateEnemiesInArea();
             GenerateWalls();
-            isPlayerInside = true;
         }
     }
+
 
     private void GenerateEnemiesInArea()
     {
