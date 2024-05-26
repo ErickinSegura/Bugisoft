@@ -439,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 574}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &228980269
@@ -658,32 +658,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
-  allowButtonHold: 0
+  weaponDamage: 40
+  timeBetweenShooting: 0.5
+  spread: 0.08
+  range: 50
+  reloadTime: 2
+  timeBetweenShots: 0.5
+  magazineSize: 2
+  bulletsPerTap: 2
+  allowButtonHold: 1
   shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 7584449902386166581, guid: 55a41d7ec43ffd14bbd41760e9acc78a, type: 3}
   audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1542007426}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
   camShakeDuration: 0
   ammoSlider: {fileID: 142305671}
   ammoFillImage: {fileID: 7876213}
-  reloadColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
 --- !u!1 &474965804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,32 +1670,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
-  spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
-  allowButtonHold: 0
+  weaponDamage: 20
+  timeBetweenShooting: 0.2
+  spread: 0.02
+  range: 120
+  reloadTime: 3
+  timeBetweenShots: 0.5
+  magazineSize: 30
+  bulletsPerTap: 1
+  allowButtonHold: 1
   shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 6141578912290018252, guid: 3de3e928b09b435498a22492f928cc18, type: 3}
   audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1542007426}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
-  camShakeDuration: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
+  camShakeDuration: 0.5
   ammoSlider: {fileID: 142305671}
   ammoFillImage: {fileID: 7876213}
-  reloadColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
 --- !u!1 &704567497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1721,7 @@ RectTransform:
   m_GameObject: {fileID: 704567497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1393043848}
@@ -1735,7 +1735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &705507993
@@ -1876,32 +1876,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
-  timeBetweenShooting: 0
+  weaponDamage: 35
+  timeBetweenShooting: 1
   spread: 0
-  range: 0
-  reloadTime: 0
-  timeBetweenShots: 0
-  magazineSize: 0
-  bulletsPerTap: 0
+  range: 80
+  reloadTime: 3
+  timeBetweenShots: 1
+  magazineSize: 6
+  bulletsPerTap: 1
   allowButtonHold: 0
   shootingSound: {fileID: 0}
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 4074450703919378636, guid: c51d823049bc09049a2f2e88b1500d2f, type: 3}
   audioSource: {fileID: 0}
-  fpsCam: {fileID: 0}
-  attackPoint: {fileID: 0}
+  fpsCam: {fileID: 963194227}
+  attackPoint: {fileID: 1542007426}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  muzzleFlash: {fileID: 0}
-  bulletHoleGraphic: {fileID: 0}
-  camShake: {fileID: 0}
-  camShakeMagnitude: 0
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 963194229}
+  camShakeMagnitude: 10
   camShakeDuration: 0
   ammoSlider: {fileID: 142305671}
   ammoFillImage: {fileID: 7876213}
-  reloadColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
 --- !u!1001 &718894636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2683,15 +2683,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 75
-  timeBetweenShooting: 3
-  spread: 0.08
+  weaponDamage: 40
+  timeBetweenShooting: 1
+  spread: 0.01
   range: 50
-  reloadTime: 2
+  reloadTime: 3
   timeBetweenShots: 1
-  magazineSize: 2
+  magazineSize: 5
   bulletsPerTap: 1
-  allowButtonHold: 1
+  allowButtonHold: 0
   shootingSound: {fileID: 8300000, guid: e06e94db1f9f7e64e845e4a1670883d5, type: 3}
   weaponModel: {fileID: 897538622635778469, guid: d23a8096a28feda43abefd7286bc584b, type: 3}
   audioSource: {fileID: 620184959}
@@ -2707,8 +2707,8 @@ MonoBehaviour:
   camShakeDuration: 1
   ammoSlider: {fileID: 142305671}
   ammoFillImage: {fileID: 7876213}
-  reloadColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
 --- !u!1 &1268163354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,8 +3088,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1246416473}
   - {fileID: 1776773836}
+  - {fileID: 1246416473}
   - {fileID: 405360293}
   - {fileID: 696063775}
   - {fileID: 716113214}
@@ -3277,7 +3277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 392, y: -206}
+  m_AnchoredPosition: {x: 392, y: -252}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533448479
@@ -3668,8 +3668,8 @@ MonoBehaviour:
   camShakeDuration: 10
   ammoSlider: {fileID: 142305671}
   ammoFillImage: {fileID: 7876213}
-  reloadColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 0, g: 0, b: 1, a: 1}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
 --- !u!224 &1817721836 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2690065753484071207, guid: 1f0559345f3bcbd47b032dcdf4ac7f33, type: 3}
@@ -3777,7 +3777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391, y: -206}
+  m_AnchoredPosition: {x: -391, y: -252}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012168168
