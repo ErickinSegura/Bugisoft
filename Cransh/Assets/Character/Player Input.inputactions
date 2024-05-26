@@ -60,6 +60,7 @@
                     "initialStateCheck": true
                 },
                 {
+<<<<<<< Updated upstream
                     "name": "ChangePreviousWeapon",
                     "type": "Button",
                     "id": "f5c88689-14da-46b1-bfaa-1fc2ccd47f87",
@@ -72,6 +73,20 @@
                     "name": "ChangeNextWeapon",
                     "type": "Button",
                     "id": "201c63f6-8731-4fc5-a9da-a9327a1f7b41",
+=======
+                    "name": "ChangeNextWeapon",
+                    "type": "Button",
+                    "id": "9a1fa4ef-71b4-4133-a6c8-9cdc075dd864",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangePreviousWeapon",
+                    "type": "Button",
+                    "id": "4c7d1699-8838-48e7-8429-dedba98eaf85",
+>>>>>>> Stashed changes
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -301,8 +316,35 @@
                 },
                 {
                     "name": "",
+<<<<<<< Updated upstream
                     "id": "6a008b0d-c412-4228-ad14-520e12f44f91",
                     "path": "<XInputController>/leftShoulder",
+=======
+                    "id": "778480eb-3c01-4711-9be1-4d86d11c6a27",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeNextWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76ff93c0-ed70-418e-8603-002a19c45bca",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeNextWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2719363-6198-48d7-b1ec-008f8eefc298",
+                    "path": "",
+>>>>>>> Stashed changes
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -312,12 +354,21 @@
                 },
                 {
                     "name": "",
+<<<<<<< Updated upstream
                     "id": "88d74a7a-21d2-4e11-95fe-a047fa825546",
                     "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ChangeNextWeapon",
+=======
+                    "id": "b36ed5d2-0538-4586-bd8a-dc7eeb97c0c3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePreviousWeapon",
+>>>>>>> Stashed changes
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

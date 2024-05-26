@@ -82,6 +82,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+<<<<<<< Updated upstream
                     ""name"": ""ChangePreviousWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""f5c88689-14da-46b1-bfaa-1fc2ccd47f87"",
@@ -94,6 +95,20 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""ChangeNextWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""201c63f6-8731-4fc5-a9da-a9327a1f7b41"",
+=======
+                    ""name"": ""ChangeNextWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a1fa4ef-71b4-4133-a6c8-9cdc075dd864"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangePreviousWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c7d1699-8838-48e7-8429-dedba98eaf85"",
+>>>>>>> Stashed changes
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -323,8 +338,35 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+<<<<<<< Updated upstream
                     ""id"": ""6a008b0d-c412-4228-ad14-520e12f44f91"",
                     ""path"": ""<XInputController>/leftShoulder"",
+=======
+                    ""id"": ""778480eb-3c01-4711-9be1-4d86d11c6a27"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeNextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76ff93c0-ed70-418e-8603-002a19c45bca"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeNextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2719363-6198-48d7-b1ec-008f8eefc298"",
+                    ""path"": """",
+>>>>>>> Stashed changes
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -334,12 +376,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+<<<<<<< Updated upstream
                     ""id"": ""88d74a7a-21d2-4e11-95fe-a047fa825546"",
                     ""path"": ""<XInputController>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeNextWeapon"",
+=======
+                    ""id"": ""b36ed5d2-0538-4586-bd8a-dc7eeb97c0c3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangePreviousWeapon"",
+>>>>>>> Stashed changes
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -872,8 +923,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_CancelReloading = m_OnFoot.FindAction("CancelReloading", throwIfNotFound: true);
+<<<<<<< Updated upstream
         m_OnFoot_ChangePreviousWeapon = m_OnFoot.FindAction("ChangePreviousWeapon", throwIfNotFound: true);
         m_OnFoot_ChangeNextWeapon = m_OnFoot.FindAction("ChangeNextWeapon", throwIfNotFound: true);
+=======
+        m_OnFoot_ChangeNextWeapon = m_OnFoot.FindAction("ChangeNextWeapon", throwIfNotFound: true);
+        m_OnFoot_ChangePreviousWeapon = m_OnFoot.FindAction("ChangePreviousWeapon", throwIfNotFound: true);
+>>>>>>> Stashed changes
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -953,8 +1009,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Reload;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_CancelReloading;
+<<<<<<< Updated upstream
     private readonly InputAction m_OnFoot_ChangePreviousWeapon;
     private readonly InputAction m_OnFoot_ChangeNextWeapon;
+=======
+    private readonly InputAction m_OnFoot_ChangeNextWeapon;
+    private readonly InputAction m_OnFoot_ChangePreviousWeapon;
+>>>>>>> Stashed changes
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -965,8 +1026,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_OnFoot_Reload;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @CancelReloading => m_Wrapper.m_OnFoot_CancelReloading;
+<<<<<<< Updated upstream
         public InputAction @ChangePreviousWeapon => m_Wrapper.m_OnFoot_ChangePreviousWeapon;
         public InputAction @ChangeNextWeapon => m_Wrapper.m_OnFoot_ChangeNextWeapon;
+=======
+        public InputAction @ChangeNextWeapon => m_Wrapper.m_OnFoot_ChangeNextWeapon;
+        public InputAction @ChangePreviousWeapon => m_Wrapper.m_OnFoot_ChangePreviousWeapon;
+>>>>>>> Stashed changes
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -994,12 +1060,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CancelReloading.started += instance.OnCancelReloading;
             @CancelReloading.performed += instance.OnCancelReloading;
             @CancelReloading.canceled += instance.OnCancelReloading;
+<<<<<<< Updated upstream
             @ChangePreviousWeapon.started += instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.performed += instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.canceled += instance.OnChangePreviousWeapon;
             @ChangeNextWeapon.started += instance.OnChangeNextWeapon;
             @ChangeNextWeapon.performed += instance.OnChangeNextWeapon;
             @ChangeNextWeapon.canceled += instance.OnChangeNextWeapon;
+=======
+            @ChangeNextWeapon.started += instance.OnChangeNextWeapon;
+            @ChangeNextWeapon.performed += instance.OnChangeNextWeapon;
+            @ChangeNextWeapon.canceled += instance.OnChangeNextWeapon;
+            @ChangePreviousWeapon.started += instance.OnChangePreviousWeapon;
+            @ChangePreviousWeapon.performed += instance.OnChangePreviousWeapon;
+            @ChangePreviousWeapon.canceled += instance.OnChangePreviousWeapon;
+>>>>>>> Stashed changes
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1022,12 +1097,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CancelReloading.started -= instance.OnCancelReloading;
             @CancelReloading.performed -= instance.OnCancelReloading;
             @CancelReloading.canceled -= instance.OnCancelReloading;
+<<<<<<< Updated upstream
             @ChangePreviousWeapon.started -= instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.performed -= instance.OnChangePreviousWeapon;
             @ChangePreviousWeapon.canceled -= instance.OnChangePreviousWeapon;
             @ChangeNextWeapon.started -= instance.OnChangeNextWeapon;
             @ChangeNextWeapon.performed -= instance.OnChangeNextWeapon;
             @ChangeNextWeapon.canceled -= instance.OnChangeNextWeapon;
+=======
+            @ChangeNextWeapon.started -= instance.OnChangeNextWeapon;
+            @ChangeNextWeapon.performed -= instance.OnChangeNextWeapon;
+            @ChangeNextWeapon.canceled -= instance.OnChangeNextWeapon;
+            @ChangePreviousWeapon.started -= instance.OnChangePreviousWeapon;
+            @ChangePreviousWeapon.performed -= instance.OnChangePreviousWeapon;
+            @ChangePreviousWeapon.canceled -= instance.OnChangePreviousWeapon;
+>>>>>>> Stashed changes
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1171,8 +1255,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnCancelReloading(InputAction.CallbackContext context);
+<<<<<<< Updated upstream
         void OnChangePreviousWeapon(InputAction.CallbackContext context);
         void OnChangeNextWeapon(InputAction.CallbackContext context);
+=======
+        void OnChangeNextWeapon(InputAction.CallbackContext context);
+        void OnChangePreviousWeapon(InputAction.CallbackContext context);
+>>>>>>> Stashed changes
     }
     public interface IUIActions
     {
