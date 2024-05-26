@@ -9,6 +9,7 @@ public class GunSystem : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction shootAction;
     private InputAction reloadAction;
+    private InputAction cancelingReload;
 
     //Stats de las armas
     public int weaponDamage;
@@ -20,9 +21,10 @@ public class GunSystem : MonoBehaviour
     //Sonido y modelo del arma
     public AudioClip shootingSound;     // Sonido de disparo
     public GameObject weaponModel;      // Apariencia del arma
-    public AudioSource audioSource;
+    public AudioSource audioSource;     // Lugar de donde se disparan las balas
+
     //Verificadores
-    bool isShooting, readyToShoot, isReloading;
+    bool isShooting, readyToShoot, isReloading, cancelReload;
 
     //Referencia
     public Camera fpsCam;
@@ -39,14 +41,17 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        cancelReload = false;
 
         playerInput = new PlayerInput();
         shootAction = playerInput.OnFoot.Shoot;
         reloadAction = playerInput.OnFoot.Reload;
-
+        cancelingReload = playerInput.OnFoot.CancelReloading;
+        
         shootAction.performed += ctx => StartShooting();
         shootAction.canceled += ctx => StopShooting();
         reloadAction.performed += ctx => Reload();
+        cancelingReload.performed += ctx => CancelReload();
     }
 
     private void OnEnable()
@@ -64,6 +69,7 @@ public class GunSystem : MonoBehaviour
         shootAction.performed -= ctx => StartShooting();
         shootAction.canceled -= ctx => StopShooting();
         reloadAction.performed -= ctx => Reload();
+        cancelingReload.performed -= ctx => CancelReload();
     }
 
     private void Update()
@@ -71,7 +77,7 @@ public class GunSystem : MonoBehaviour
         MyInput();
     }
 
-    //Función para registrar los inputs del player y disparar
+    //FunciÃ³n para registrar los inputs del player y disparar
     private void MyInput()
     {
         if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
@@ -91,7 +97,7 @@ public class GunSystem : MonoBehaviour
         isShooting = false;
     }
 
-    //Función para disparar
+    //FunciÃ³n para disparar
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
@@ -140,13 +146,27 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-    //Función para recargar
+    //FunciÃ³n para recargar
     private void Reload()
     {
-        if (bulletsLeft < magazineSize && !isReloading)
+        if (bulletsLeft < magazineSize && !isReloading && !cancelReload)
         {
             isReloading = true;
+            cancelReload = false;
             Invoke("reloadFinished", reloadTime);
+            Debug.Log("Recargado");
+        }
+    }
+
+    private void CancelReload()
+    {
+        if (isReloading && !cancelReload) 
+        {
+            isReloading = false;
+            cancelReload = true;
+            CancelInvoke("reloadFinished");
+            cancelReload = false;
+            Debug.Log("Recarga cancelada");
         }
     }
 
@@ -159,5 +179,10 @@ public class GunSystem : MonoBehaviour
     public int getBulletsLeft()
     {
         return bulletsLeft;
+    }
+
+    public bool getIsReloading()
+    {
+        return isReloading;
     }
 }
