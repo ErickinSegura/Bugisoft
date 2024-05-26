@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 
 public class GunSystem : MonoBehaviour
 {
+    private PlayerInput playerInput;
+    private InputAction shootAction;
+    private InputAction reloadAction;
+    private InputAction cancelingReload;
+
     //Stats de las armas
     public int weaponDamage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
@@ -17,9 +21,10 @@ public class GunSystem : MonoBehaviour
     //Sonido y modelo del arma
     public AudioClip shootingSound;     // Sonido de disparo
     public GameObject weaponModel;      // Apariencia del arma
-    public AudioSource audioSource;
+    public AudioSource audioSource;     // Lugar de donde se disparan las balas
+
     //Verificadores
-    bool isShooting, readyToShoot, isReloading;
+    bool isShooting, readyToShoot, isReloading, cancelReload;
 
     //Referencia
     public Camera fpsCam;
@@ -27,62 +32,82 @@ public class GunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
 
-
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
 
-    // Referencia al slider de la barra de munici�n
-    public Slider ammoSlider;
-    // Referencia al Image del Fill del slider para cambiar su color
-    public Image ammoFillImage;
-
-    // Colores para la recarga
-    public Color reloadColor = new Color(0xAD / 255f, 0x21 / 255f, 0x00 / 255f); // #AD2100
-    Color white = Color.white;
-    public Color normalColor = new Color(0f, 250f / 255f, 255f / 255f); // #00FAFF
-    // Color azulClaro = new Color(0f, 250f / 255f, 255f / 255f);
-
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
-        UpdateAmmoUI();
+        cancelReload = false;
+
+        playerInput = new PlayerInput();
+        shootAction = playerInput.OnFoot.Shoot;
+        reloadAction = playerInput.OnFoot.Reload;
+        cancelingReload = playerInput.OnFoot.CancelReloading;
+        
+        shootAction.performed += ctx => StartShooting();
+        shootAction.canceled += ctx => StopShooting();
+        reloadAction.performed += ctx => Reload();
+        cancelingReload.performed += ctx => CancelReload();
     }
+
+    private void OnEnable()
+    {
+        playerInput.OnFoot.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.OnFoot.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        shootAction.performed -= ctx => StartShooting();
+        shootAction.canceled -= ctx => StopShooting();
+        reloadAction.performed -= ctx => Reload();
+        cancelingReload.performed -= ctx => CancelReload();
+    }
+
     private void Update()
     {
-        // ammoFillImage.color = azulClaro;
         MyInput();
-        
     }
 
-    //Funcion para registrar los inputs del mouse y disparar
+    //Función para registrar los inputs del player y disparar
     private void MyInput()
     {
-        if (allowButtonHold)  isShooting = Input.GetKey(KeyCode.Mouse0);
-        else isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading) Reload();
-        
-        if (readyToShoot && isShooting &&  !isReloading && bulletsLeft > 0)
+        if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
         {
             bulletsShot = bulletsPerTap;
             Shoot(audioSource);
         }
     }
 
-    //Funcion para disparar
+    private void StartShooting()
+    {
+        isShooting = true;
+    }
+
+    private void StopShooting()
+    {
+        isShooting = false;
+    }
+
+    //Función para disparar
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
         bulletsLeft--;
 
         //Spread
-        float x = Random.Range(-spread,spread);
+        float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
-        
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x,y,0);
+
+        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
         //Disparar
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
@@ -110,8 +135,6 @@ public class GunSystem : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
-        UpdateAmmoUI();
-
         Invoke("ResetShoot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)
@@ -123,21 +146,34 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-    //Funcion para recargar
+    //Función para recargar
     private void Reload()
     {
-        isReloading = true;
-        Invoke("reloadFinished", reloadTime);
+        if (bulletsLeft < magazineSize && !isReloading && !cancelReload)
+        {
+            isReloading = true;
+            cancelReload = false;
+            Invoke("reloadFinished", reloadTime);
+            Debug.Log("Recargado");
+        }
+    }
 
-        // Actualizar UI durante la recarga
-        StartCoroutine(ReloadUIUpdate());
+    private void CancelReload()
+    {
+        if (isReloading && !cancelReload) 
+        {
+            isReloading = false;
+            cancelReload = true;
+            CancelInvoke("reloadFinished");
+            cancelReload = false;
+            Debug.Log("Recarga cancelada");
+        }
     }
 
     private void reloadFinished()
     {
         bulletsLeft = magazineSize;
         isReloading = false;
-        UpdateAmmoUI();
     }
 
     public int getBulletsLeft()
@@ -145,36 +181,8 @@ public class GunSystem : MonoBehaviour
         return bulletsLeft;
     }
 
-    private IEnumerator ReloadUIUpdate()
+    public bool getIsReloading()
     {
-        float elapsedTime = 0;
-        ammoFillImage.color = white;
-        //ammoFillImage.color = reloadColor;
-
-        while (elapsedTime < reloadTime)
-        {
-            elapsedTime += Time.deltaTime;
-            ammoSlider.value = Mathf.Lerp(0, 1, elapsedTime / reloadTime);
-            yield return null; // Esperar un frame
-        }
-
-        //ammoFillImage.color = white;
-        FinishReload();
-        UpdateAmmoUI();
+        return isReloading;
     }
-
-    private void FinishReload()
-    {
-        ammoFillImage.color = white;
-        ammoSlider.fillRect.GetComponent<Image>().color = normalColor;
-    }
-
-    public void UpdateAmmoUI()
-    {
-        if (ammoSlider != null)
-        {
-            ammoSlider.value = (float)bulletsLeft / magazineSize;
-        }
-    }
-
 }
