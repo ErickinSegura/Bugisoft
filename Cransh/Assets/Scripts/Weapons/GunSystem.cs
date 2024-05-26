@@ -164,8 +164,8 @@ public class GunSystem : MonoBehaviour
         GameObject flash = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
         Destroy(flash, 0.5f); // Destruye el muzzle flash despu�s de 0.5 segundos (ajusta el tiempo seg�n sea necesario)
 
-        bulletsLeft--;
-        bulletsShot--;
+        bulletsLeft-=1;
+        bulletsShot-=1;
 
         UpdateAmmoUI();
 
@@ -257,5 +257,10 @@ public class GunSystem : MonoBehaviour
     public bool getIsReloading()
     {
         return isReloading;
+    }
+
+    public void changeWeaponPositionOnReload()
+    {
+
     }
 }

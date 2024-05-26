@@ -1,0 +1,321 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1410473890808665540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159639510821251472}
+  - component: {fileID: 4399597840659088317}
+  m_Layer: 0
+  m_Name: Revolver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1159639510821251472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410473890808665540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4149925564647718730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4399597840659088317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410473890808665540}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 50
+  timeBetweenShooting: 1.5
+  spread: 0
+  range: 80
+  reloadTime: 3
+  timeBetweenShots: 2
+  magazineSize: 12
+  bulletsPerTap: 1
+  allowButtonHold: 0
+  shootingSound: {fileID: 8300000, guid: 3bc2ffedcd64d3d4d8c3254d3f0cd56a, type: 3}
+  weaponModel: {fileID: 6492786072240423912, guid: b1467d437fb03e14dabbe74689ea2c33, type: 3}
+  audioSource: {fileID: 0}
+  fpsCam: {fileID: 0}
+  attackPoint: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 0}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
+  ammoSlider: {fileID: 0}
+  ammoFillImage: {fileID: 0}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
+  bulletPrefab: {fileID: 713817019861238464, guid: 6a57f7b71bb04e548926ac901fe5437e, type: 3}
+--- !u!1 &2664322991440235781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4149925564647718730}
+  m_Layer: 0
+  m_Name: Armas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4149925564647718730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664322991440235781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5969714, y: 5.7173166, z: -1.6765233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6699247936618479547}
+  - {fileID: 1910640233619647565}
+  - {fileID: 7864707353697897187}
+  - {fileID: 1159639510821251472}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3192460789499826297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910640233619647565}
+  - component: {fileID: 2398196116139984161}
+  m_Layer: 0
+  m_Name: PumpActionShotgun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1910640233619647565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192460789499826297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4149925564647718730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2398196116139984161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192460789499826297}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 40
+  timeBetweenShooting: 1.5
+  spread: 0.08
+  range: 50
+  reloadTime: 2
+  timeBetweenShots: 0.5
+  magazineSize: 24
+  bulletsPerTap: 6
+  allowButtonHold: 0
+  shootingSound: {fileID: 8300000, guid: dd9a17f6ef816de4f8b1c5cb3f1b0b44, type: 3}
+  weaponModel: {fileID: 6168403364605918938, guid: 548db0dc6b50d784a9b38aaa0d059e41, type: 3}
+  audioSource: {fileID: 0}
+  fpsCam: {fileID: 0}
+  attackPoint: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 0}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
+  ammoSlider: {fileID: 0}
+  ammoFillImage: {fileID: 0}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
+  bulletPrefab: {fileID: 713817019861238464, guid: 6a57f7b71bb04e548926ac901fe5437e, type: 3}
+--- !u!1 &4444880182550399980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6699247936618479547}
+  - component: {fileID: 5915389486924666528}
+  m_Layer: 0
+  m_Name: Minigun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6699247936618479547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444880182550399980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4149925564647718730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5915389486924666528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444880182550399980}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 5
+  timeBetweenShooting: 0.07
+  spread: 0.09
+  range: 100
+  reloadTime: 10
+  timeBetweenShots: 0.01
+  magazineSize: 300
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  shootingSound: {fileID: 8300000, guid: 7b264f1b7b80e0d4faeb563bf7810e34, type: 3}
+  weaponModel: {fileID: 5512881598159730979, guid: 0c4bddd927941e54ca7c20bf391bc3d0, type: 3}
+  audioSource: {fileID: 0}
+  fpsCam: {fileID: 0}
+  attackPoint: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 0}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
+  ammoSlider: {fileID: 0}
+  ammoFillImage: {fileID: 0}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
+  bulletPrefab: {fileID: 713817019861238464, guid: 6a57f7b71bb04e548926ac901fe5437e, type: 3}
+--- !u!1 &5841529496315483083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7864707353697897187}
+  - component: {fileID: 1448993021459563962}
+  m_Layer: 0
+  m_Name: Rfile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7864707353697897187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841529496315483083}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4149925564647718730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448993021459563962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841529496315483083}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 20
+  timeBetweenShooting: 0.2
+  spread: 0.02
+  range: 120
+  reloadTime: 3
+  timeBetweenShots: 0.5
+  magazineSize: 36
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  shootingSound: {fileID: 8300000, guid: 91086b4ebda796a478f9c1b457cfd2ca, type: 3}
+  weaponModel: {fileID: 8162686215796192825, guid: 9cac0eb2fbb20ab48967f50566c50285, type: 3}
+  audioSource: {fileID: 0}
+  fpsCam: {fileID: 0}
+  attackPoint: {fileID: 0}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
+  bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  camShake: {fileID: 0}
+  camShakeMagnitude: 10
+  camShakeDuration: 10
+  ammoSlider: {fileID: 0}
+  ammoFillImage: {fileID: 0}
+  reloadColor: {r: 0.6784314, g: 0.12941177, b: 0, a: 1}
+  normalColor: {r: 0, g: 0.98039216, b: 1, a: 1}
+  bulletPrefab: {fileID: 713817019861238464, guid: 6a57f7b71bb04e548926ac901fe5437e, type: 3}

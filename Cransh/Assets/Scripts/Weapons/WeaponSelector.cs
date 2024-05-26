@@ -24,7 +24,6 @@ public class WeaponSelector : MonoBehaviour
         playerInput = new PlayerInput();
         changeNextWeapon = playerInput.OnFoot.ChangeNextWeapon;
         changePreviousWeapon = playerInput.OnFoot.ChangePreviousWeapon;
-
         changeNextWeapon.performed += ctx => ChangeNextWeapon();
         changePreviousWeapon.performed += ctx => ChangePreviousWeapon();
 
