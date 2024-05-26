@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,7 +38,7 @@ public class GunSystem : MonoBehaviour
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
 
-    // Referencia al slider de la barra de munición
+    // Referencia al slider de la barra de municiï¿½n
     public Slider ammoSlider;
     // Referencia al Image del Fill del slider para cambiar su color
     public Image ammoFillImage;
@@ -93,7 +93,7 @@ public class GunSystem : MonoBehaviour
         MyInput();
     }
 
-    // Función para registrar los inputs del player y disparar
+    // Funciï¿½n para registrar los inputs del player y disparar
     private void MyInput()
     {
         if (readyToShoot && isShooting && !isReloading && bulletsLeft > 0)
@@ -118,7 +118,7 @@ public class GunSystem : MonoBehaviour
         isShooting = false;
     }
 
-    // Función para disparar
+    // Funciï¿½n para disparar
     private void Shoot(AudioSource audioSource)
     {
         readyToShoot = false;
@@ -143,7 +143,7 @@ public class GunSystem : MonoBehaviour
                 rayHit.collider.GetComponent<PlayerBehaviour>().TakenDamage(weaponDamage);
             }
 
-            // Crear bala parada si la habilidad está activa
+            // Crear bala parada si la habilidad estï¿½ activa
             if (timeStopAbility != null && timeStopAbility.IsAbilityActive())
             {
                 GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, Quaternion.identity);
@@ -162,7 +162,7 @@ public class GunSystem : MonoBehaviour
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
 
         GameObject flash = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-        Destroy(flash, 0.5f); // Destruye el muzzle flash después de 0.5 segundos (ajusta el tiempo según sea necesario)
+        Destroy(flash, 0.5f); // Destruye el muzzle flash despuï¿½s de 0.5 segundos (ajusta el tiempo segï¿½n sea necesario)
 
         bulletsLeft--;
         bulletsShot--;
@@ -180,7 +180,7 @@ public class GunSystem : MonoBehaviour
         readyToShoot = true;
     }
 
-    // Función para recargar
+    // Funciï¿½n para recargar
     private void Reload()
     {
         if (bulletsLeft < magazineSize && !isReloading && !cancelReload)
