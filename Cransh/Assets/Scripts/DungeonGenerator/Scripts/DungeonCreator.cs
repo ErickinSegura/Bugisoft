@@ -81,7 +81,7 @@ public class DungeonCreator : MonoBehaviour
         }
 
         CreateWalls(wallParent);
-        GenerateRandomObjects();  // Generar objetos aleatorios
+        //GenerateRandomObjects();  // Generar objetos aleatorios
         GenerateRandomProps();    // Generar objetos
         GenerateRareSpawns();     // Generar objetos raros
         GenerateObjectFarFromPlayer(); // Generar un objeto lejos del jugador
