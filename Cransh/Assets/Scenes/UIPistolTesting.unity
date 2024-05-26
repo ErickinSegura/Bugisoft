@@ -3159,6 +3159,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 620184959}
     - target: {fileID: 1448993021459563962, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
+      propertyPath: weaponDamage
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448993021459563962, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
       propertyPath: ammoFillImage
       value: 
       objectReference: {fileID: 7876213}
@@ -3175,6 +3179,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 142305671}
     - target: {fileID: 2398196116139984161, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
+      propertyPath: reloadTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398196116139984161, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 1542007426}
@@ -3182,6 +3190,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 620184959}
+    - target: {fileID: 2398196116139984161, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
+      propertyPath: weaponDamage
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 2398196116139984161, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
       propertyPath: ammoFillImage
       value: 
@@ -3251,6 +3263,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 620184959}
     - target: {fileID: 4399597840659088317, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
+      propertyPath: weaponDamage
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399597840659088317, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
       propertyPath: ammoFillImage
       value: 
       objectReference: {fileID: 7876213}
@@ -3274,6 +3290,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 620184959}
+    - target: {fileID: 5915389486924666528, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
+      propertyPath: weaponDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5915389486924666528, guid: f67d9f6f21b5f084aae3d2000ee2b8e9, type: 3}
       propertyPath: ammoFillImage
       value: 

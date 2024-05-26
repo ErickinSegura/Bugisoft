@@ -21,6 +21,7 @@ public class GunSystem : MonoBehaviour
 
     // Sonido y modelo del arma
     public AudioClip shootingSound;     // Sonido de disparo
+    public AudioClip reloadSound;
     public GameObject weaponModel;      // Apariencia del arma
     public AudioSource audioSource;     // Lugar de donde se disparan las balas
 
@@ -187,11 +188,13 @@ public class GunSystem : MonoBehaviour
         {
             isReloading = true;
             cancelReload = false;
+            audioSource.PlayOneShot(reloadSound);
             Invoke("reloadFinished", reloadTime);
             Debug.Log("Recargado");
 
             // Actualizar UI durante la recarga
             StartCoroutine(ReloadUIUpdate());
+
         }
     }
 
@@ -199,6 +202,7 @@ public class GunSystem : MonoBehaviour
     {
         if (isReloading && !cancelReload)
         {
+            audioSource.Stop();
             isReloading = false;
             cancelReload = true;
             CancelInvoke("reloadFinished");
@@ -214,6 +218,7 @@ public class GunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+        ;
         UpdateAmmoUI();
     }
 

@@ -10,6 +10,7 @@ public class WeaponSelector : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction changeNextWeapon;
     private InputAction changePreviousWeapon;
+    
 
 
     public Transform weaponHoldPoint; // Punto donde se sujetará el arma
@@ -88,7 +89,6 @@ public class WeaponSelector : MonoBehaviour
             weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
             currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
             EquipWeapon(weapons[currentWeaponIndex]);
-
         }
         else
         {
@@ -106,6 +106,7 @@ public class WeaponSelector : MonoBehaviour
                 currentWeaponIndex = weapons.Length - 1;
             }
             EquipWeapon(weapons[currentWeaponIndex]);
+           
         }
     }
     public void EquipWeapon(GunSystem selectedWeapon)
@@ -118,6 +119,7 @@ public class WeaponSelector : MonoBehaviour
         currentWeaponInstance = Instantiate(selectedWeapon.weaponModel, weaponHoldPoint.position, weaponHoldPoint.rotation);
         currentWeaponInstance.transform.parent = weaponHoldPoint;        
         weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
+        weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
 
     }
 
@@ -127,26 +129,31 @@ public class WeaponSelector : MonoBehaviour
         {
             currentWeaponIndex = 0;
             EquipWeapon(weapons[currentWeaponIndex]);
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && weapons.Length >= 2)
         {
             currentWeaponIndex = 1;
             EquipWeapon(weapons[currentWeaponIndex]);
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && weapons.Length >= 3)
         {
             currentWeaponIndex = 2;
             EquipWeapon(weapons[currentWeaponIndex]);
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && weapons.Length >= 4)
         {
             currentWeaponIndex = 3;
             EquipWeapon(weapons[currentWeaponIndex]);
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5) && weapons.Length >= 5)
         {
             currentWeaponIndex = 4;
             EquipWeapon(weapons[currentWeaponIndex]);
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().UpdateAmmoUI();
         }
     }
 }

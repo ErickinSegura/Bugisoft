@@ -44,16 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 50
+  weaponDamage: 80
   timeBetweenShooting: 1.5
   spread: 0
   range: 80
-  reloadTime: 3
+  reloadTime: 6
   timeBetweenShots: 2
   magazineSize: 12
   bulletsPerTap: 1
   allowButtonHold: 0
   shootingSound: {fileID: 8300000, guid: 3bc2ffedcd64d3d4d8c3254d3f0cd56a, type: 3}
+  reloadSound: {fileID: 8300000, guid: 2d828d1e54e74ac4fb38c4464acc326d, type: 3}
   weaponModel: {fileID: 6492786072240423912, guid: b1467d437fb03e14dabbe74689ea2c33, type: 3}
   audioSource: {fileID: 0}
   fpsCam: {fileID: 0}
@@ -150,16 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 40
+  weaponDamage: 100
   timeBetweenShooting: 1.5
   spread: 0.08
   range: 50
-  reloadTime: 2
+  reloadTime: 6
   timeBetweenShots: 0.5
   magazineSize: 24
   bulletsPerTap: 6
   allowButtonHold: 0
   shootingSound: {fileID: 8300000, guid: dd9a17f6ef816de4f8b1c5cb3f1b0b44, type: 3}
+  reloadSound: {fileID: 8300000, guid: c63924074fb23ed48a86d647920c645c, type: 3}
   weaponModel: {fileID: 6168403364605918938, guid: 548db0dc6b50d784a9b38aaa0d059e41, type: 3}
   audioSource: {fileID: 0}
   fpsCam: {fileID: 0}
@@ -221,16 +223,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
+  weaponDamage: 15
   timeBetweenShooting: 0.07
   spread: 0.09
   range: 100
-  reloadTime: 10
+  reloadTime: 5
   timeBetweenShots: 0.01
   magazineSize: 300
   bulletsPerTap: 1
   allowButtonHold: 1
   shootingSound: {fileID: 8300000, guid: 7b264f1b7b80e0d4faeb563bf7810e34, type: 3}
+  reloadSound: {fileID: 8300000, guid: 0adb2407a460b5c408578be9d7b8b975, type: 3}
   weaponModel: {fileID: 5512881598159730979, guid: 0c4bddd927941e54ca7c20bf391bc3d0, type: 3}
   audioSource: {fileID: 0}
   fpsCam: {fileID: 0}
@@ -292,16 +295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8321837a94895e84f930e5c55869d321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 20
+  weaponDamage: 60
   timeBetweenShooting: 0.2
   spread: 0.02
   range: 120
   reloadTime: 3
   timeBetweenShots: 0.5
-  magazineSize: 36
+  magazineSize: 64
   bulletsPerTap: 1
   allowButtonHold: 1
   shootingSound: {fileID: 8300000, guid: 91086b4ebda796a478f9c1b457cfd2ca, type: 3}
+  reloadSound: {fileID: 8300000, guid: 6d615f6899cc0f245b687df8acf0dfab, type: 3}
   weaponModel: {fileID: 8162686215796192825, guid: 9cac0eb2fbb20ab48967f50566c50285, type: 3}
   audioSource: {fileID: 0}
   fpsCam: {fileID: 0}
