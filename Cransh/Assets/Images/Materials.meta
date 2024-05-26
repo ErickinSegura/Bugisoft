@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Cransh/Assets/Images/Materials.meta
 guid: ac4380d1baadb7842ba430d95e5ac419
+========
+guid: d64f781491403fa44a730eb2808a5b77
+>>>>>>>> 956b790 (Casita):Cransh/Assets/Images.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
