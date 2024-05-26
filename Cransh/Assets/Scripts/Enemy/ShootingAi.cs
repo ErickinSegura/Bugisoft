@@ -22,6 +22,8 @@ public class ShootingAi : MonoBehaviour
     private float shootTimer; // Temporizador para disparar
     private Vector3 offset; // Desplazamiento aleatorio
 
+    private float bulletLifetime = 1.0f;
+
     void Start()
     {
         // Inicializar el temporizador y la dirección aleatoria
@@ -71,6 +73,25 @@ public class ShootingAi : MonoBehaviour
     public void TakenDamage(int damage)
     {
         enemyLife -= damage;
+        if (enemyLife <= 0)
+        {
+            Debug.Log("Destruyelo");
+            StartCoroutine(DestroyEnemy());
+        }
+    }
+
+    private IEnumerator DestroyEnemy()
+    {
+        yield return new WaitForEndOfFrame();
+
+        // Destruir todos los hijos
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Destruir el objeto principal
+        Destroy(gameObject);
     }
 
     private void SetRandomDirection()
@@ -132,5 +153,8 @@ public class ShootingAi : MonoBehaviour
         {
             bulletRigidbody.velocity = bulletSpawnPoint.forward * bulletSpeed;
         }
+
+        // Destruir la bala después de un tiempo
+        Destroy(bullet, bulletLifetime);
     }
 }

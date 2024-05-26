@@ -120,7 +120,24 @@ public class StoppedBullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("CHOQUE");
-            Destroy(other.gameObject); // Destruye el enemigo
+            ShootingAi enemy = other.GetComponent<ShootingAi>();
+            if (enemy != null)
+            {
+                Debug.Log("entonces no?");
+                enemy.TakenDamage(weaponDamage);
+            }
+            Destroy(gameObject); // Destruye la bala
+        }
+
+        PlayerBehaviour player = other.gameObject.GetComponent<PlayerBehaviour>();
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("CHOQUE Jugador ja");
+            if (player != null)
+            {
+                player.TakenDamage(100);
+            }
             Destroy(gameObject); // Destruye la bala
         }
     }

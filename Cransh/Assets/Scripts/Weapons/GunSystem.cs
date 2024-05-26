@@ -130,28 +130,35 @@ public class GunSystem : MonoBehaviour
 
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
+
         // Disparar
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            Debug.Log(rayHit.collider.name);
-            if (rayHit.collider.CompareTag("Enemy"))
-            {
-                //rayHit.collider.GetComponent<ShootingAi>().TakenDamage(weaponDamage);
-            }
-            else if (rayHit.collider.CompareTag("Player"))
-            {
-                rayHit.collider.GetComponent<PlayerBehaviour>().TakenDamage(weaponDamage);
-            }
-
-            // Crear bala parada si la habilidad est� activa
+            // Crear bala parada si la habilidad está activa
             if (timeStopAbility != null && timeStopAbility.IsAbilityActive())
             {
                 GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, Quaternion.identity);
                 var stoppedBullet = bullet.GetComponent<StoppedBullet>();
                 stoppedBullet.Initialize(direction, rayHit.point);
                 timeStopAbility.AddStoppedBullet(stoppedBullet);
+            }else
+            {
+                Debug.Log("Hit: " + rayHit.collider.name); // Debugging
+
+                if (rayHit.collider.CompareTag("Enemy"))
+                {
+                    Debug.Log("Hit Enemy");
+                    rayHit.collider.GetComponent<ShootingAi>().TakenDamage(weaponDamage);
+                }
+                else if (rayHit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Hit Player");
+                    rayHit.collider.GetComponent<PlayerBehaviour>().TakenDamage(weaponDamage);
+                }
             }
+
         }
+
 
         audioSource.PlayOneShot(shootingSound);
 

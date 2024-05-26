@@ -19,6 +19,10 @@ public class DungeonStartBattle : MonoBehaviour
     public Vector3 manualRotationVertical = Vector3.zero; // Rotación manual para paredes verticales
 
     private bool isPlayerInside = false; // Para verificar si el jugador está dentro del collider
+    public float activationDistance = 5f;
+
+    private Transform playerTransform; // Referencia al transform del jugador
+
 
     public void Awake()
     {
@@ -48,18 +52,47 @@ public class DungeonStartBattle : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter called with: " + other.gameObject.name);
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player detected, starting battle");
             isPlayerInside = true;  // Mover esta línea antes de generar enemigos y paredes
-            GenerateEnemiesInArea();
-            GenerateWalls();
+            playerTransform = other.transform;
+
+            // Empezar una nueva corrutina para verificar la distancia
+            StartCoroutine(CheckPlayerDistanceAndStartBattle());
         }
     }
 
+    private IEnumerator CheckPlayerDistanceAndStartBattle()
+    {
+        BoxCollider collider = GetComponent<BoxCollider>();
+        Vector3 colliderCenter = collider.bounds.center;
+        Vector3 colliderSize = collider.size;
+
+        // Esperar hasta que el jugador esté dentro de la distancia de activación
+        while (true)
+        {
+            Vector3 playerPosition = playerTransform.position;
+            float distanceToLeft = Mathf.Abs(playerPosition.x - (colliderCenter.x - colliderSize.x / 2));
+            float distanceToRight = Mathf.Abs(playerPosition.x - (colliderCenter.x + colliderSize.x / 2));
+            float distanceToTop = Mathf.Abs(playerPosition.z - (colliderCenter.z + colliderSize.z / 2));
+            float distanceToBottom = Mathf.Abs(playerPosition.z - (colliderCenter.z - colliderSize.z / 2));
+
+            if (distanceToLeft > activationDistance && distanceToRight > activationDistance &&
+                distanceToTop > activationDistance && distanceToBottom > activationDistance)
+            {
+                break;
+            }
+
+            yield return null; // Esperar un frame antes de volver a comprobar
+        }
+
+        GenerateEnemiesInArea();
+        GenerateWalls();
+    }
 
     private void GenerateEnemiesInArea()
     {

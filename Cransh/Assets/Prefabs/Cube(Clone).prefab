@@ -119,11 +119,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemiesPrefab:
-  - {fileID: 8398606345016057668, guid: ad692672a49e8474895e1adf9a6301be, type: 3}
-  - {fileID: 5514250628241463362, guid: a77a43bb9a7cc90438e8af23c7f042fb, type: 3}
+  - {fileID: 8398606345016057668, guid: 07a1869822deb9140a4f1d5255b245fc, type: 3}
+  - {fileID: 5514250628241463362, guid: 260c9d86013c981499e34000bf825faf, type: 3}
   numberOfEnemies: 10
   minColliderSize: 20
   isBattleActive: 0
   wallPrefab: {fileID: 244777335584115285, guid: cedcfa858673fc241bc8c2f47297b600, type: 3}
   manualRotationHorizontal: {x: 0, y: 0, z: 0}
   manualRotationVertical: {x: 0, y: 0, z: 0}
+  activationDistance: 10

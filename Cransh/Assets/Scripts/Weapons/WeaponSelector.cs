@@ -17,7 +17,7 @@ public class WeaponSelector : MonoBehaviour
     public AudioSource audioSource; // Fuente de audio para los sonidos de disparo
     private int currentWeaponIndex = 0; // Índice del arma actual
     private GameObject currentWeaponInstance;
-    public TextMeshProUGUI text;
+    // public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -50,8 +50,7 @@ public class WeaponSelector : MonoBehaviour
     {
         HandleWeaponSwitch();
         weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
-        text.SetText(weapons[currentWeaponIndex].GetComponent<GunSystem>().getBulletsLeft() + " / " + 
-            weapons[currentWeaponIndex].GetComponent<GunSystem>().magazineSize);
+        //text.SetText(weapons[currentWeaponIndex].GetComponent<GunSystem>().getBulletsLeft() + " / " +        weapons[currentWeaponIndex].GetComponent<GunSystem>().magazineSize);
     }
 
     void HandleWeaponSwitch()

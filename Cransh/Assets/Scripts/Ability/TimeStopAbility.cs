@@ -57,6 +57,9 @@ public class TimeStopAbility : MonoBehaviour
         abilitySlider.value = 1;
         abilitySlider.fillRect.GetComponent<Image>().color = abilityActiveColor; // Cambiar el color a rojo durante la habilidad
 
+        // Pausar a los enemigos
+        ToggleEnemies(false);
+
         float elapsedTime = 0f;
         while (elapsedTime < abilityDuration)
         {
@@ -70,13 +73,25 @@ public class TimeStopAbility : MonoBehaviour
         abilityActive = false;
         cooldownTimer = abilityCooldown;
 
+        // Reanudar a los enemigos
+        ToggleEnemies(true);
+
         // Mover las balas detenidas
         foreach (var bullet in stoppedBullets)
         {
-            bullet.MoveBulletAlongLine(1f); // Ajusta la duración del movimiento para que sea visible
+            bullet.MoveBulletAlongLine(0.5f); // Ajusta la duración del movimiento para que sea visible
         }
 
         stoppedBullets.Clear(); // Limpiar la lista después de mover las balas
+    }
+
+    private void ToggleEnemies(bool state)
+    {
+        var enemies = FindObjectsOfType<ShootingAi>();
+        foreach (var enemy in enemies)
+        {
+            enemy.enabled = state;
+        }
     }
 
     public bool IsAbilityActive()
