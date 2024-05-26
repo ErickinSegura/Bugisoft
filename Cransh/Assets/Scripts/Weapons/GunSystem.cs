@@ -103,6 +103,11 @@ public class GunSystem : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateAmmoUI();
+    }
+
     private void StartShooting()
     {
         isShooting = true;
