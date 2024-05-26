@@ -2,19 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class WeaponSelector : MonoBehaviour
 {
-    public Transform weaponHoldPoint; // Punto donde se sujetará el arma
+    private PlayerInput playerInput;
+    private InputAction changeNextWeapon;
+    private InputAction changePreviousWeapon;
+
+
+    public Transform weaponHoldPoint; // Punto donde se sujetarÃ¡ el arma
     public GunSystem[] weapons; // Lista de armas disponibles
     public AudioSource audioSource; // Fuente de audio para los sonidos de disparo
-    private int currentWeaponIndex = 0; // Índice del arma actual
+    private int currentWeaponIndex = 0; // Ãndice del arma actual
     private GameObject currentWeaponInstance;
     public TextMeshProUGUI text;
 
-    // Referencia al slider de la barra de munición
-    public Slider ammoSlider;
+    private void Awake()
+    {
+        playerInput = new PlayerInput();
+        changeNextWeapon = playerInput.OnFoot.ChangeNextWeapon;
+        changePreviousWeapon = playerInput.OnFoot.ChangePreviousWeapon;
+
+        changeNextWeapon.performed += ctx => ChangeNextWeapon();
+        changePreviousWeapon.performed += ctx => ChangePreviousWeapon();
+
+    }
+
+    private void OnEnable()
+    {
+        playerInput.OnFoot.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.OnFoot.Disable();
+    }
+   
 
     void Start()
     {
@@ -31,27 +56,59 @@ public class WeaponSelector : MonoBehaviour
 
     void HandleWeaponSwitch()
     {
-        
+        //Verifica que no se este intentando cambiar de arma con la rueda del Mouse
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
-        { 
-            weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
-            if (scroll > 0)
+        {
+            //Verifica que no se este recargando mientras se quiere cambiar de arma
+            if (!weapons[currentWeaponIndex].GetComponent<GunSystem>().getIsReloading())
             {
-                currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
-            }
-            else if (scroll < 0)
-            {
-                currentWeaponIndex--;
-                if (currentWeaponIndex < 0)
+                weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
+                if (scroll > 0)
                 {
-                    currentWeaponIndex = weapons.Length - 1;
+                    currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
                 }
+                else if (scroll < 0)
+                {
+                    currentWeaponIndex--;
+                    if (currentWeaponIndex < 0)
+                    {
+                        currentWeaponIndex = weapons.Length - 1;
+                    }
+                }
+                EquipWeapon(weapons[currentWeaponIndex]);
+
+            }
+
+        }
+    }
+    void ChangeNextWeapon()
+    {
+        if (!weapons[currentWeaponIndex].GetComponent<GunSystem>().getIsReloading())
+        {
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
+            currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
+            EquipWeapon(weapons[currentWeaponIndex]);
+
+        }
+        else
+        {
+            return;
+        }
+    }
+    void ChangePreviousWeapon()
+    {
+        if (!weapons[currentWeaponIndex].GetComponent<GunSystem>().getIsReloading())
+        {
+            weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = false;
+            currentWeaponIndex--;
+            if (currentWeaponIndex < 0)
+            {
+                currentWeaponIndex = weapons.Length - 1;
             }
             EquipWeapon(weapons[currentWeaponIndex]);
         }
     }
-
     public void EquipWeapon(GunSystem selectedWeapon)
     {
         if (currentWeaponInstance != null)
@@ -63,11 +120,6 @@ public class WeaponSelector : MonoBehaviour
         currentWeaponInstance.transform.parent = weaponHoldPoint;        
         weapons[currentWeaponIndex].GetComponent<GunSystem>().enabled = true;
 
-        // Pasar la referencia del slider al sistema de armas
-        weapons[currentWeaponIndex].ammoSlider = ammoSlider;
-
-        // Actualizar la barra de munición al cambiar de arma
-        weapons[currentWeaponIndex].UpdateAmmoUI();
     }
 
     public void ChangeWeapon()
